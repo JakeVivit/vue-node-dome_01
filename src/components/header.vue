@@ -4,14 +4,14 @@
              class="el-menu-demo"
              mode="horizontal"
              @select="handleSelect"
-             background-color="#545c64"
-             text-color="#fff"
-             active-text-color="#ffd04b">
-      <el-menu-item index="1">处理中心</el-menu-item>
-      <el-menu-item index="2">处理中心</el-menu-item>
-      <el-menu-item index="3">处理中心</el-menu-item>
-      <el-menu-item index="4">处理中心</el-menu-item>
-      <el-menu-item index="5">处理中心</el-menu-item>
+             background-color="#fff"
+             text-color="#6c6f70"
+             active-text-color="#308697">
+      <span>模拟商城</span>
+      <div class="right">
+        <el-menu-item index="4">处理中心</el-menu-item>
+        <el-menu-item index="5">处理中心</el-menu-item>
+      </div>
     </el-menu>
   </div>
 </template>
@@ -30,3 +30,13 @@
     }
   }
 </script>
+
+<style rel="stylesheet/scss" lang="scss">
+  .header{
+    .right{
+      float: right;
+      display: inline-block;
+    }
+  }
+</style>
+

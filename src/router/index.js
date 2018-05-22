@@ -1,16 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import goodsList from '../views/goodsList.vue'
+import store from '../store'
 
-Vue.use(Router)
+Vue.use(Router);
 
-export default new Router({
-  mode:'history',
-  routes: [
-    {
-      path: '/',
-      name: 'myGoodsList',
-      component: goodsList
+const routers = [
+  {
+    path: '/',
+    name: 'myGoodsList',
+    component: (resolve) => require(['../views/goodsList.vue'],resolve)
+  }
+]
+
+function filterRouters(routers) {  //处理空的路由
+  return routers.filter((router) => {
+    if (router === null) {
+      return false;
+    }else if (router.children) {
+      router.children = filterRouters(router.children);
     }
-  ]
-})
+    return true;
+  });
+}
+
+const router = new Router({
+  mode: 'history',
+  routes: filterRouters(routers)
+});
+
+export default router
+
